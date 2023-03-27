@@ -15,10 +15,11 @@
 Public Class CurrencyConverter
     Dim dblSterling As Double 'stores the sterling exchange rate'
     Dim dblEuro As Double 'stores the euro exchange rate'
-    Dim dblTotal As Double 'stores the currency calculation'
-    Dim intQuantity As Integer 'Stores the amount of currency to be converted'
+    Dim dblTotal As Double 'stores the total amount
+    Dim intQuantity As Integer 'Stores the amount of currency to be converted' 
     Dim StrEuroorSterling As String 'stores information on whether euro or sterling'
     Dim thisdate As Date = Today 'variable to store and display today's date'
+
     Private Sub CurrencyConverter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblDate.Text = thisdate
     End Sub
@@ -26,7 +27,7 @@ Public Class CurrencyConverter
     Private Sub UpdateSterlingBtn_Click(sender As Object, e As EventArgs) Handles UpdateSterlingBtn.Click
         dblSterling = Val(SterlingTextBox.Text)
         If dblSterling > 0 And dblSterling <= 10 Then
-            lblUpdatedSterling.Text = "Sterling rate is: " & dblSterling
+            lblUpdatedSterling.Text = "New rate for sterling is: " & "" & dblSterling
         Else
             MessageBox.Show("Sterling Amount entered must be between 1 and 10")
         End If
@@ -48,10 +49,10 @@ Public Class CurrencyConverter
         intQuantity = Val(dblAmountBox.Text)
         If SterlingRadioBtn.Checked = True Then
             dblTotal = intQuantity * dblEuro
-            lblCalucaltedAmount.Text = "The cost for " & intQuantity & "Sterling is euro" & dblTotal
+            lblCalucaltedAmount.Text = "The cost for  " & intQuantity & "Sterling is Euro € " & dblTotal
         ElseIf EuroRadioBtn.Checked = True Then
             dblTotal = intQuantity * dblSterling
-            lblCalucaltedAmount.Text = "The cost for " & intQuantity & "Euro is £" & dblTotal
+            lblCalucaltedAmount.Text = "The cost for  " & intQuantity & "Euro is £ " & dblTotal
         Else
             MessageBox.Show("You need to select a currency")
         End If
